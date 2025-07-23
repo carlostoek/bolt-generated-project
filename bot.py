@@ -62,7 +62,7 @@ from handlers.free_channel_admin import router as free_channel_admin_router
 from handlers.publication_test import router as publication_test_router
 from handlers.main_menu import router as main_menu_router
 
-# Integración del sistema narrativo
+# Narrative system imports - corrected paths
 from narrative.handlers import router as narrative_router
 from narrative.admin_handlers import router as admin_narrative_handlers
 
@@ -203,7 +203,7 @@ async def main() -> None:
             ("lore", lore_router),
             ("combinar_pistas", combinar_pistas.router),
             ("channel_access", channel_access_router),
-            ("narrative", narrative_router),  # <--- Integración narrativa
+            ("narrative", narrative_router),
             ("admin_narrative", admin_narrative_handlers),
         ]
         
