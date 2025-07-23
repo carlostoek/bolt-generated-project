@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Text, func
+from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Text, func, JSON
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -36,3 +36,27 @@ class UserDecision(Base):
     narrative_state = relationship("UserNarrativeState", back_populates="decisions")
     # Opcional: relación con User si se requiere
     # user = relationship("User")
+
+# MODELOS FALTANTES
+
+class StoryFragment(Base):
+    __tablename__ = "story_fragments"
+
+    id = Column(String, primary_key=True)
+    story_id = Column(String, nullable=False)
+    title = Column(String, nullable=True)
+    narrator_text = Column(Text, nullable=True)
+    atmosphere_text = Column(Text, nullable=True)
+    type = Column(String, nullable=True)  # e.g. 'decision', 'ending', etc.
+    chapter = Column(Integer, nullable=True)
+    next_fragment = Column(String, nullable=True)
+    rewards = Column(JSON, nullable=True)
+    requirements = Column(JSON, nullable=True)
+
+class NarrativeMetrics(Base):
+    __tablename__ = "narrative_metrics"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    fragment_id = Column(String, nullable=False)
+    times_visited = Column(Integer, default=0)
+    choice_distribution = Column(JSON, nullable=True)
