@@ -1,4 +1,4 @@
 # database/__init__.py
-from .models import User
+from .base_models import User
 
 __all__ = ['User']
