@@ -1,4 +1,4 @@
-yf# constants/keyboards.py
+# constants/keyboards.py
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 
 main_menu_keyboard = ReplyKeyboardMarkup(
